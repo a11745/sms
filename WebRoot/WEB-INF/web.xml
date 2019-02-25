@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <!-- 配置错误页面
+
+       error-page标签用来配置档应用出现指定错误码的错误时候，有哪个页面来处理这个错误，而不是给用户
+
+           显示系统的错误信息。子标签：
+
+       error-code:系统错误码
+
+       location:应用系统中的处理错误页面。
+
+     -->
+
+    <error-page>
+
+       <error-code>404</error-code>
+
+       <location>/404.jsp</location>
+
+       <!-- 表示当系统发生404就是不存在请求地址的错误的时候，页面跳转到404.html页面。 -->
+
+    </error-page>
+
+    <error-page>
+
+       <error-code>500</error-code>
+
+       <location>/error.jsp</location>
+
+       <!-- 表示当系统发生500也就是操作异常错误的时候，页面跳转到error.jsp页面。 -->
+
+    </error-page>
+
+    <error-page>
+       <exception-type>java.lang.NullPointerException</exception-type>
+
+       <location>/error.jsp</location>
+       <!-- 表示当系统发生空指针异常错误的时候，页面跳转到error.html页面。 -->
+    </error-page>
+	<!-- 配置服务器监听器 -->
+	<listener>
+		<listener-class>com.lzcc.util.ApplicationListener</listener-class>
+	</listener>
+	<!-- 配置字符编码过滤器 -->
+	<filter>
+		<filter-name>charEncodingFilter</filter-name>
+		<filter-class>com.lzcc.util.CharEncodingFilter</filter-class>
+		<!-- 配置新的字符编码 -->
+		<init-param>
+			<param-name>newEncoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>charEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 配置session 过期过滤器 -->
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.lzcc.util.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/user/*</url-pattern>
+	</filter-mapping>
+	 <session-config>  
+         <session-timeout>20</session-timeout>  
+   </session-config>
+	<!-- 配置LoginServlet -->
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<!-- 导出数据 -->
+	<servlet>
+		<servlet-name>exportClazzScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.ExportClazzScoreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>exportClazzScoreServlet</servlet-name>
+		<url-pattern>/user/exportClazzScore</url-pattern>
+	</servlet-mapping>
+	<!-- 注销 -->
+	<servlet>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.LoginOutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateUserServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdateUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdatePwdServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdatePwdServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PreAddUserServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.PreAddUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllClazzServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetAllClazzServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddUserServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.AddUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllUserServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetAllUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteUserServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.DeleteUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ResetPwdServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.ResetPwdServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteClazzServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.DeleteClazzServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddClazzServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.AddClazzServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateClazzServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdateClazzServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllCourseServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetAllCourseServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateCourseServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdateCourseServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddCourseServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.AddCourseServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetAllTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PreAddTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.PreAddTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.AddTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdateTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.DeleteTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetTeacherTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetTeacherTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PreAddScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.PreAddScoreServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.AddScoreServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetStudentScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetStudentScoreServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetStudentTcctServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetStudentTcctServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetScore</servlet-name>
+		<servlet-class>com.lzcc.servlet.GetScore</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.DeleteScoreServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateScoreServlet</servlet-name>
+		<servlet-class>com.lzcc.servlet.UpdateScoreServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>PreQueryScoreServlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.PreQueryScoreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryScoreSevlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.QueryScoreSevlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PreGetMyScoreServlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.PreGetMyScoreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetMyScoreServlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.GetMyScoreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ExportStudentScoreServlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.ExportStudentScoreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteCourseServlet</servlet-name>
+    <servlet-class>com.lzcc.servlet.DeleteCourseServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+<!-- servlet映射问卷 -->
+	<servlet-mapping>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<url-pattern>/loginOut</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateUserServlet</servlet-name>
+		<url-pattern>/user/updateUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdatePwdServlet</servlet-name>
+		<url-pattern>/user/updatePwd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PreAddUserServlet</servlet-name>
+		<url-pattern>/user/preAddUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllClazzServlet</servlet-name>
+		<url-pattern>/user/getAllClazz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddUserServlet</servlet-name>
+		<url-pattern>/user/addUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllUserServlet</servlet-name>
+		<url-pattern>/user/getAllUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteUserServlet</servlet-name>
+		<url-pattern>/user/deleteUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPwdServlet</servlet-name>
+		<url-pattern>/user/resetPwd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteClazzServlet</servlet-name>
+		<url-pattern>/user/deleteClazz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddClazzServlet</servlet-name>
+		<url-pattern>/user/addClazz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateClazzServlet</servlet-name>
+		<url-pattern>/user/updateClazz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllCourseServlet</servlet-name>
+		<url-pattern>/user/getAllCourse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateCourseServlet</servlet-name>
+		<url-pattern>/user/updateCourse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddCourseServlet</servlet-name>
+		<url-pattern>/user/addCourse</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllTcctServlet</servlet-name>
+		<url-pattern>/user/getAllTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PreAddTcctServlet</servlet-name>
+		<url-pattern>/user/preAddTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddTcctServlet</servlet-name>
+		<url-pattern>/user/addTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateTcctServlet</servlet-name>
+		<url-pattern>/user/updateTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteTcctServlet</servlet-name>
+		<url-pattern>/user/deleteTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetTeacherTcctServlet</servlet-name>
+		<url-pattern>/user/getTeacherTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PreAddScoreServlet</servlet-name>
+		<url-pattern>/user/preAddScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddScoreServlet</servlet-name>
+		<url-pattern>/user/addScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetStudentScoreServlet</servlet-name>
+		<url-pattern>/user/getStudentScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetStudentTcctServlet</servlet-name>
+		<url-pattern>/user/getStudentTcct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetScore</servlet-name>
+		<url-pattern>/user/getScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteScoreServlet</servlet-name>
+		<url-pattern>/user/deleteScore</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateScoreServlet</servlet-name>
+		<url-pattern>/user/updateScore</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PreQueryScoreServlet</servlet-name>
+    <url-pattern>/user/preQueryScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryScoreSevlet</servlet-name>
+    <url-pattern>/user/queryScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PreGetMyScoreServlet</servlet-name>
+    <url-pattern>/user/preGetMyScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetMyScoreServlet</servlet-name>
+    <url-pattern>/user/getMyScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ExportStudentScoreServlet</servlet-name>
+    <url-pattern>/user/exportStudentScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteCourseServlet</servlet-name>
+    <url-pattern>/user/deleteCourse</url-pattern>
+  </servlet-mapping>
+</web-app>

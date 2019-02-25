@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+*{font-size:12px;}
+table{border-collapse:collapse;border:1px solid #78C0D4;}
+td,th{border:1px solid #78C0D4;}
+table .first-line{background-color:#A5D5E2;padding: 5px;border: 1px solid #78C0D4;}
+a{text-decoration: none;}
+.add{background: url(new.png);width:16px;height:16px;}
+.delete{background: url(delete.png);width:16px;height:16px;}
+.list{background: url(list.png);width:16px;height:16px;}
+.edit{background: url(edit.png);width:16px;height:16px;}
+.ok{background: url(ok.png);border:none;padding:0;width:16px;height:16px;}
+.save{background: url(save.png);border:none;padding:0;width:16px;height:16px;}
+a.pagelinkstyle:link {width:20px; line-height:20px;font-size: 14px;color: #666666;text-decoration: none;background-color:#D7E7FF;}
+a.pagelinkstyle:visited {width:20px; line-height:20px;font-size: 14px;color: #666666;text-decoration: none;background-color:#D7E7FF;}
+a.pagelinkstyle:hover {width:20px; line-height:20px;font-size: 14px;color: #000000;text-decoration: none;background-color:#8CBAFF;}
+a.pagelinkstyle1:link {width:40px; line-height:20px;font-size: 14px;color: #666666;text-decoration: none;background-color:#D7E7FF;}
+a.pagelinkstyle1:visited {width:40px; line-height:20px;font-size: 14px;color: #666666;text-decoration: none;background-color:#D7E7FF;}
+a.pagelinkstyle1:hover {width:40px; line-height:20px;font-size: 14px;color: #000000;text-decoration: none;background-color:#8CBAFF;}
+.currentpagestyle{width:20px; line-height:20px;background-color:#8CBAFF;font-size: 14px;color: #FF0000;}

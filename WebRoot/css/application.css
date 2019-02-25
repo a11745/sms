@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+/*
+* IE 兼容性
+*/
+@-ms-viewport       { width: device-width; }
+body { padding-top: 70px; }
+/**
+*登陆框
+*/
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0px auto;
+}
+
+.modifyRow
+{
+	padding: 0 15px;
+}
+/*
+修正navbar
+*/
+
+.carousel-control.left.my {
+background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.09) 0), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.09) 0, rgba(0, 0, 0, 0.0001) 100%);
+}
+
+.carousel-control.right.my {
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0), color-stop(rgba(0, 0, 0, 0.09) 100%));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.09) 100%);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+/*go to top*/
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+/*让鼠标悬浮时候，鼠标hover时就弹出二级菜单*/
+.navbar .nav > li .dropdown-menu {
+	margin: 0;
+}
+.navbar .nav > li:hover .dropdown-menu {
+	display: block;
+}
+#wrapper
+{
+	margin-top: -15px;
+}
+#left-menu
+{
+	margin-top: 10px;
+}
+
+.footer {
+	color: rgb(153, 153, 153);
+	text-align: center;
+	padding: 30px 0px;
+	margin-top: 70px;
+	border-top: 1px solid rgb(229, 229, 229);
+	background-color: rgb(245, 245, 245);
+}
+.footer.my
+{
+		margin-top: -70px;
+}
